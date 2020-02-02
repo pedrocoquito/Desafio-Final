@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            <title>Foodfy</title>
+        {% endblock %}
+
+       {%include "parts/styles.njk"%}
+    </head>
+    <body>
+        {%include "parts/messages.njk"%}
+
+        {% if session.userId %} 
+            {% include "parts/userHeader.njk" %} 
+        {% else %}
+            {% include "parts/header.njk" %}
+        {% endif %}
+        
+        {% block content %}
+        {% endblock %}
+
+        {% include "parts/footer.njk" %}
+    </body>
+</html>

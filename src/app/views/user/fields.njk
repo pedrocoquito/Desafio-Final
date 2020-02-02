@@ -1,0 +1,50 @@
+<div class="item">
+    <div>Nome Completo</div>
+    <div class="input">
+        <input 
+            type="text" 
+            name="name" 
+            placeholder="Digite seu nome completo" 
+            value="{{ user.name }}"
+            required>
+    </div>
+</div>
+
+<div class="item">
+    <div>Email</div>
+    <div class="input">
+        <input 
+            type="email" 
+            name="email" 
+            placeholder="Digite seu melhor email" 
+            value="{{ user.email }}"
+            onblur="Validate.apply(this, 'isEmail')">
+    </div>
+</div>
+
+<div class="item">
+    <div>Senha</div>
+    <div class="input">
+        <input 
+            type="password" 
+            name="password" 
+            {% if not user.id %}
+            placeholder="Crie uma senha segura"
+            {% else %}
+            placeholder="Digite sua senha para atualizar o cadastro"
+            {% endif %}>
+    </div>
+</div>
+
+{% if not user.id %}
+    <div class="item">
+        <div>Repetir Senha</div>
+        <div class="input">
+            <input 
+                type="password" 
+                name="passwordRepeat" 
+                placeholder="Repita a senha escolhida">
+        </div>
+    </div>
+{% endif %}
+
