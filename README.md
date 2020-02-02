@@ -1,7 +1,7 @@
-# Launchstore
-Projeto web de comércio eletrônico
+# Foodfy
+Projeto web para site de receitas
 
-O sistema realiza cadastro, remoção e atualização de produtos, assim como filtros de busca e cadastro de imagens.
+O sistema realiza cadastro, remoção e atualização de receitas e usuários, assim como filtros de busca e cadastro de imagens.
 
 Para o projeto ser executado é necessário ter o PostgreSQL em sua máquina e com o projeto aberto no VS code/ou terminal realizar as seguintes etapas:
 
