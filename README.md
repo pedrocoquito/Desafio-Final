@@ -1,15 +1,17 @@
 # Foodfy
 Projeto web para site de receitas
 
-O sistema realiza cadastro, remoção e atualização de receitas e usuários, assim como filtros de busca e cadastro de imagens.
+Para o projeto ser executado é necessário ter o PostgreSQL, Node e NPM instalados em sua máquina. 
+Com o projeto aberto no VS code/ou terminal realizar as seguintes etapas:
 
-Para o projeto ser executado é necessário ter o PostgreSQL em sua máquina e com o projeto aberto no VS code/ou terminal realizar as seguintes etapas:
-
+* Acesse a pasta src/config e no arquivo db.js altere as propriedades (user e password) de acordo com sua configuração;
 * Use o comando npm install (para instalar todas as libs e dependências do projeto)
 * Utilize o arquivo database.sql para gerar o banco de dados
 * Com o comando node seed.js popule o banco de dados
 * Agora o comando npm start para que o projeto seja executado (porta 3000)
 
-Obs: Todos os usuários possuem a senha 1234 (conforme no arquivo seed.js) o email e outros dados são aleatórios.
+Obs1: Todos os usuários possuem a senha 1234 (conforme no arquivo seed.js)o email e outros dados são aleatórios.
+
+Obs1: Por padrão está sendo criado um usuário admin com email admin@email.com senha 1234 para que você tenha permissão a executar tudo que foi elaborado no projeto.
 
 

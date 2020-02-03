@@ -1,34 +1,33 @@
 const express = require('express')
 const routes = express.Router()
 
-const HomeController = require('../app/controllers/HomeController')
+const Homecontroller = require('../app/controllers/Homecontroller')
 
-const recipes = require('../routes/recipes')
-const chefs = require('../routes/chefs')
-const users = require('./users')
+const chef = require('../routes/chef')
+const recipe = require('../routes/recipe')
+const user = require('../routes/user')
 
-routes.get("/", HomeController.index)
-routes.get("/about", HomeController.about)
-routes.get('/recipes', HomeController.recipes)
-routes.get('/recipes/:id',HomeController.info)
-routes.get('/chefs', HomeController.chefs)
+routes.get('/', Homecontroller.index)
+routes.get('/about', Homecontroller.about)
+routes.get('/recipes', Homecontroller.recipes)
+routes.get('/recipes/:id',Homecontroller.info)
+routes.get('/chefs', Homecontroller.chefs)
 
-routes.use('/admin', users)
-routes.use('/admin', chefs)
-routes.use('/admin', recipes)
+routes.use('/admin', chef)
+routes.use('/admin', recipe)
+routes.use('/admin', user)
 
 routes.get('/admin', function(req, res) {
-    return res.redirect('/admin/recipes')
+    return res.redirect("/admin/recipes")
 })
 routes.get('/recipes', function(req, res) {
-    return res.redirect('/admin/recipes')
+    return res.redirect("/admin/recipes")
 })
 routes.get('/chefs', function(req, res) {
-    return res.redirect('/admin/chefs')
+    return res.redirect("/admin/chefs")
 })
 routes.get('/users', function(req, res) {
-    return res.redirect('/admin/users')
+    return res.redirect("/admin/users")
 })
 
 module.exports = routes
-

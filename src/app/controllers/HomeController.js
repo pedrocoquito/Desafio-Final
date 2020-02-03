@@ -1,4 +1,4 @@
-const LoadReceiptsService = require('../services/LoadReceiptsService')
+const LoadRecipeService = require('../services/LoadRecipeService')
 
 module.exports = {
     async index(req, res) {
