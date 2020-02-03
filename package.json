@@ -1,7 +1,7 @@
 {
   "name": "foodfy",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "debug": "nodemon --inspect=0.0.0.0:9229 src/server.js",
     "start": "npm-run-all -p nodemon browsersync",
