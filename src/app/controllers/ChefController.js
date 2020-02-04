@@ -1,17 +1,53 @@
-const LoadRecipeService = require('../services/LoadRecipeService')
+const Chef = require('../models/Chef')
 
 module.exports = {
     async index(req, res) {
         try {
-            /*const allReceipts = await LoadReceiptsService.load('receipts')
-            const receipts = allReceipts.filter((recipe, index) => index > 2 ? false : true)*/
-
             return res.render("home/index")
         } catch (err) {
             console.error(err)
         }
     },
-    about(req, res){
-        return res.render("home/about")
+    async show(req, res) {
+        try {
+            return res.render("home/index")
+        } catch (err) {
+            console.error(err)
+        }
+    },
+    async create(req, res) {
+        try {
+            return res.render("home/index")
+        } catch (err) {
+            console.error(err)
+        }
+    },
+    async post(req, res) {
+        try {
+            return res.render("home/index")
+        } catch (err) {
+            console.error(err)
+        }
+    },
+    async edit(req, res) {
+        try {
+            return res.render("home/index")
+        } catch (err) {
+            console.error(err)
+        }
+    },
+    async put(req, res) {
+        try {
+            return res.render("home/index")
+        } catch (err) {
+            console.error(err)
+        }
+    },
+    async delete(req, res) {
+        try {
+            return res.render("home/index")
+        } catch (err) {
+            console.error(err)
+        }
     }
 }
