@@ -1,0 +1,23 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+  <title>Receitas</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="app">
+    <section>
+      <div class="cards">
+        {% for recipe in recipes %}
+          <div class="card recipe-pointer" id="{{recipe.id}}">
+            <img src="{{recipe.image if recipe.image else 'http://placehold.it/500x500?text=SEM-IMAGEM'}}" alt="{{recipe.title}}">
+            <h6>{{recipe.title}}</h6>
+            <p>{{recipe.author}}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+</div>
+
+{% endblock %}

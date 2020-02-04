@@ -1,0 +1,58 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+  <title>{{recipe.tittle}}</title>
+{% endblock %}
+
+{% block content %}
+<div class="app">
+
+    <div class="head-description">
+      <img src="{{recipe.image if recipe.image else 'http://placehold.it/500x500?text=SEM-IMAGEM'}}" alt="{{recipe.title}}">
+      <h6>{{ recipe.title }}</h6>
+      <p>{{ recipe.author }}</p>
+    </div>
+
+    <div class="recipe-container">
+
+      <div class="item">
+        <div class="prep-title">
+          <h1>Ingredients</h1>
+          <p>esconder</p>
+        </div>
+        <div class="content">
+          <ul>
+            {% for list in recipe.ingredients %}
+              <li>{{ list }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="prep-title">
+          <h1>Modo de preparo</h1>
+          <p>esconder</p>
+        </div>
+        <div class="content">
+          <ul>
+            {% for list in recipe.preparation %}
+              <li>{{ list }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="prep-title">
+          <h1>Informações adicionais</h1>
+          <p>esconder</p>
+        </div>
+        <div class="content">
+          <p>{{ recipe.information }}</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+{% endblock %}
