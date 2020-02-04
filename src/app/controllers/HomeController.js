@@ -3,7 +3,7 @@ const Recipe = require('../models/Recipe')
 module.exports = {
     async index(req, res) {
         try {
-            const recipes = await Recipe.search('Functionality')
+            const recipes = await Recipe.search('t')
             return res.render('home/index', { recipes })
         } catch (err) {
             console.error(err)
