@@ -12,6 +12,6 @@ Com o projeto aberto no VS code/ou terminal realizar as seguintes etapas:
 
 Obs1: Todos os usuários possuem a senha 1234 (conforme no arquivo seed.js)o email e outros dados são aleatórios.
 
-Obs1: Por padrão está sendo criado um usuário admin com email admin@email.com senha 1234 para que você tenha permissão a executar tudo que foi elaborado no projeto.
+Obs2: Por padrão está sendo criado um usuário admin com email admin@email.com senha 1234 para que você tenha permissão a executar tudo que foi elaborado no projeto.
 
 
