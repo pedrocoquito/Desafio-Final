@@ -8,7 +8,6 @@ CREATE TABLE "recipes" (
   "ingredients" TEXT[],
   "preparation" TEXT[],
   "information" TEXT,
-  "user_id" INT,
   "created_at" TIMESTAMP DEFAULT(now()),
   "updated_at" TIMESTAMP DEFAULT(now())
 );
@@ -58,7 +57,6 @@ PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
 ALTER TABLE "recipe_files" ADD FOREIGN KEY ("recipe_id") REFERENCES "recipes" ("id");
 ALTER TABLE "recipe_files" ADD FOREIGN KEY ("file_id") REFERENCES "files" ("id");
 ALTER TABLE "recipes" ADD FOREIGN KEY ("chef_id") REFERENCES "chefs" ("id");
-ALTER TABLE "recipes" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 ALTER TABLE "chefs" ADD FOREIGN KEY ("file_id") REFERENCES "files" ("id");
 
 CREATE FUNCTION trigger_set_timestamp()

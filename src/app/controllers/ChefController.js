@@ -3,7 +3,7 @@ const Chef = require('../models/Chef')
 module.exports = {
     async index(req, res) {
         try {
-            return res.render("home/index")
+            return res.render("home/chefs")
         } catch (err) {
             console.error(err)
         }

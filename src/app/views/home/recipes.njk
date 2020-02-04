@@ -9,13 +9,11 @@
 <div class="app">
     <section>
       <div class="cards">
-        {% for recipe in recipes %}
-          <div class="card recipe-pointer" id="{{recipe.id}}">
-            <img src="{{recipe.image if recipe.image else 'http://placehold.it/500x500?text=SEM-IMAGEM'}}" alt="{{recipe.title}}">
-            <h6>{{recipe.title}}</h6>
-            <p>{{recipe.author}}</p>
+          <div class="card recipe-pointer" id="1">
+            <img src="http://placehold.it/500x500?text=SEM-IMAGEM" alt="img">
+            <h6>Title</h6>
+            <p>Author</p>
           </div>
-        {% endfor %}
       </div>
     </section>
 </div>

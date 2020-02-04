@@ -1,19 +1,20 @@
-const LoadRecipeService = require('../services/LoadRecipeService')
+const Recipe = require('../models/Recipe')
 
 module.exports = {
     async index(req, res) {
         try {
-            return res.render("home/index")
+            const recipes = await Recipe.search('Functionality')
+            return res.render('home/index', { recipes })
         } catch (err) {
             console.error(err)
         }
     },
-    about(req, res){
+    about(req, res) {
         return res.render("home/about")
     },
     async recipes(req, res) {
         try {
-            return res.render("home/index")
+            return res.render("home/recipes")
         } catch (err) {
             console.error(err)
         }
@@ -27,7 +28,7 @@ module.exports = {
     },
     async chefs(req, res) {
         try {
-            return res.render("home/index")
+            return res.render("home/chefs")
         } catch (err) {
             console.error(err)
         }

@@ -1,10 +1,10 @@
-const LoadRecipeService = require('../services/LoadRecipeService')
+
 const Recipe = require('../models/Recipe')
 
 module.exports = {
     async index(req, res) {
         try {
-            return res.render("home/index")
+            return res.render("home/recipes")
         } catch (err) {
             console.error(err)
         }

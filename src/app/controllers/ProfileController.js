@@ -7,7 +7,7 @@ module.exports = {
         } catch (err) {
             console.error(err)
         }
-    }, 
+    },
     async put(req, res) {
         try {
             return res.render("home/index")
@@ -15,5 +15,4 @@ module.exports = {
             console.error(err)
         }
     },
-
 }
