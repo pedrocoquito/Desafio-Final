@@ -21,7 +21,8 @@ module.exports = {
     },
     async info(req, res) {
         try {
-            return res.render("home/index")
+            const recipe = await Recipe.find(req.params.id)
+            return res.render("home/recipeInfo", {recipe})
         } catch (err) {
             console.error(err)
         }

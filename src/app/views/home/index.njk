@@ -19,7 +19,7 @@
     <div class="recipes">
     {% for item in recipes %}
        <div class="recipe-card">
-       <a href="/recipes/{{loop.index - 1}}">
+       <a href="/recipes/{{item.id}}">
         <img
           class="image"
           src="/images/burger.png"

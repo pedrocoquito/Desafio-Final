@@ -7,10 +7,10 @@ const Recipe = require('./src/app/models/Recipe')
 const File = require('./src/app/models/File')
 const Chef = require('./src/app/models/Chef')
 
-let totalUsers = 3
-let totalChefs = 3
+let totalUsers = 2
+let totalChefs = 2
 let recipesIds = []
-let totalRecipes = 5
+let totalRecipes = 3
 let filesIds = []
 
 async function createUsers() {
@@ -90,7 +90,7 @@ async function createRecipes() {
 async function createFiles() {
     const files = []
 
-    while (files.length < 10) {
+    while (files.length < 5) {
         files.push({
             name: faker.image.image(),
             path: `public/images/burger.png`

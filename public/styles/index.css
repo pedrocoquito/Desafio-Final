@@ -1,56 +1,29 @@
-@import "https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap";
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 :root {
-  --font-dark: #111;
-  --font-light: #999;
+  --font-dark: #111111;
+  --font-light: #ffffff;
 }
 
 * {
-  margin: 0;
   padding: 0;
-  border: 0;
+  margin: 0;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
 }
 
-body, html {
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  font-family: "Roboto", sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.main-header {
-  display: flex;
-  margin: 36px auto 32px auto;
-  height: 28px;
-  width: 70%;
-  max-width: 940px;
-  min-width: 940px;
-  color: var(--font-dark);
-}
-
-.main-header .nav {
-  width: 100%;
-  margin-left: 9%;
-}
-
-.main-header .link {
-  display: inline-block;
-  font-size: 16px;
-  line-height: 28px;
-  margin-right: 32px;
-}
-
-.main-header .link:hover {
-  color: var(--font-light);
-}
-
-.active {
-  font-weight: bold;
+header {
+  padding: 32px;
 }
 
 .main-footer {
@@ -62,7 +35,7 @@ a {
 }
 
 .main-footer .text {
-  color: var(--font-light);
+  color: var(--font-dark);
   font-size: 14px;
   text-align: center;
   line-height: 62px;
@@ -262,6 +235,70 @@ form .item > div:nth-child(1) {
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 8px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  max-width: 940px;
+  width: 95%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.nav a:first-child {
+  margin-right: 70px;
+}
+
+nav a {
+  font-size: 16px;
+  color: var(--font-dark);
+  position: relative;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav a{
+  margin-left: 16px;
+}
+
+.nav a:hover{
+  font-weight: bold;
+}
+
+nav form {
+  display: grid;
+  grid-template-columns: auto 120px;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  right: 0;
+}
+
+nav form input[type="text"] {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 8px 24px;
+}
+
+
+nav form button {
+  margin-left: 1%;
+  background-color: #6558C3;
+  border-radius: 4px;
+  padding: 8px 32px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+nav form button:hover {
+  filter: brightness(90%);
 }
 
 form .item .input input,
