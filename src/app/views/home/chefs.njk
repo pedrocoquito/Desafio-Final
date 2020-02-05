@@ -6,16 +6,20 @@
 
 {% block content %}
 
-  <div class="app">
-    <div class="chefs-container">
-        <div class="chef">
-          <img src="http://placehold.it/500x500?text=SEM-IMAGEM" alt="img">
-          <div class="chef-info">
-            <h3>Nome</h3>
-              <p>2 receitas</p>
+<div class="main">
+  <div class="main-recipes">
+    <div class="recipes">
+      {% for chef in chefs %}
+          <div class="chef-card">
+            <img src="{{chef.image}}" alt="{{chef.name}}">
+            <div class="chef">
+              <h2>{{chef.name}}</h2>
+              <h3>{{chef.recipes}} receita(s)</h3>
+            </div>
           </div>
-        </div>
+      {% endfor %}
     </div>
   </div>
+</div>
 
 {% endblock %}

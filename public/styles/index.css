@@ -15,6 +15,10 @@
   list-style-type: none;
 }
 
+html, body {
+  min-height: 100vh;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   font-weight: normal;
@@ -27,18 +31,15 @@ header {
 }
 
 .main-footer {
+  padding: 32px;
+  background: #eeeeee;
   margin-top: auto;
-  height: 100px;
-  width: 100%;
-  background-color: #eee;
-  height: 62px;
 }
 
 .main-footer .text {
   color: var(--font-dark);
   font-size: 14px;
   text-align: center;
-  line-height: 62px;
 }
 
 .about-page {
@@ -377,4 +378,31 @@ form .item textarea {
 .items .info .actions a:hover {
   font-weight: bold;
   text-decoration: underline;
+}
+
+.chef-card {
+  display: flex;
+  align-items: center;
+}
+
+.chef-card img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chef{
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.chef h2 {
+  font-size: 18px;
+  color: #111111;
+}
+
+.chef h3 {
+  font-size: 14px;
+  color: #666666;
 }
