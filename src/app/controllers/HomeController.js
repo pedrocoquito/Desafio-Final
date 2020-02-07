@@ -4,7 +4,7 @@ const db = require('../../config/db')
 module.exports = {
     async index(req, res) {
         try {
-            const recipes = await Recipe.search('')
+            const recipes = await Recipe.topSix()
             return res.render('home/index', { recipes })
         } catch (err) {
             console.error(err)
@@ -21,7 +21,7 @@ module.exports = {
                 const recipes = await Recipe.search(search)
                 return res.render("home/recipes", { recipes })
             } else {
-                const recipes = await Recipe.search('')
+                const recipes = await Recipe.findAll()
                 return res.render("home/recipes", { recipes })
             }
         } catch (err) {

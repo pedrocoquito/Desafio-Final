@@ -17,5 +17,15 @@ module.exports = {
         } catch (err) {
             console.error(err)
         }
+    },
+    async topSix() {
+        try {
+            let query = `select * from recipes order by created_at limit 6`
+
+            const results = await db.query(query)
+            return results.rows
+        } catch (err) {
+            console.error(err)
+        }
     }
 }
