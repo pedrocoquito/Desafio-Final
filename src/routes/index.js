@@ -17,7 +17,7 @@ routes.use('/admin', recipe)
 routes.use('/admin', user)
 
 routes.get('/admin', function(req, res) {
-    res.redirect('/admin/recipes')
+    res.redirect('/admin/users')
 })
 routes.get('/recipes', function(req, res) {
     res.redirect('/admin/recipes')

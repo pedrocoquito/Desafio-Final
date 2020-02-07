@@ -14,7 +14,7 @@
        <a href="/recipes/{{item.id}}">
         <img
           class="image"
-          src="/images/burger.png"
+          src="{{item.img if item.img else 'http://placehold.it/500x500?text=SEM-IMAGEM'}}"
           alt="{{item.title}}"
         />
         </a>

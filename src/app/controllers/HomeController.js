@@ -21,7 +21,7 @@ module.exports = {
                 const recipes = await Recipe.search(search)
                 return res.render("home/recipes", { recipes })
             } else {
-                const recipes = await Recipe.findAll()
+                const recipes = await Recipe.search('')
                 return res.render("home/recipes", { recipes })
             }
         } catch (err) {
@@ -30,7 +30,7 @@ module.exports = {
     },
     async details(req, res) {
         try {
-            const recipe = await Recipe.find(req.params.id)
+            const recipe = await Recipe.details(req.params.id)
             return res.render("home/recipeDetails", {recipe})
         } catch (err) {
             console.error(err)

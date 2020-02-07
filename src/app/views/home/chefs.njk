@@ -11,7 +11,7 @@
     <div class="recipes">
       {% for chef in chefs %}
           <div class="chef-card">
-            <img src="{{chef.image}}" alt="{{chef.name}}">
+            <img src="{{chef.image if chef.image else 'http://placehold.it/500x500?text=SEM-IMAGEM'}}" alt="{{chef.name}}">
             <div class="chef">
               <h2>{{chef.name}}</h2>
               <h3>{{chef.recipes}} receita(s)</h3>
