@@ -7,7 +7,7 @@ const mailer = require('../../lib/mailer')
 module.exports = {
     LoginForm(req, res) {
         try {
-            return res.render("home/index")
+            return res.render("admin/session/login")
         } catch (err) {
             console.error(err)
         }

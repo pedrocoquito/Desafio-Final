@@ -5,20 +5,20 @@
             <title>Foodfy</title>
         {% endblock %}
 
-       {%include "parts/styles.njk"%}
+       {%include "./parts/styles.njk"%}
     </head>
     <body>
-        {%include "parts/messages.njk"%}
+        {%include "./parts/messages.njk"%}
 
         {% if session.userId %} 
-            {% include "parts/userHeader.njk" %} 
+            {% include "./parts/userHeader.njk" %} 
         {% else %}
-            {% include "parts/header.njk" %}
+            {% include "./parts/header.njk" %}
         {% endif %}
         
         {% block content %}
         {% endblock %}
 
-        {% include "parts/footer.njk" %}
+        {% include "./parts/footer.njk" %}
     </body>
 </html>
