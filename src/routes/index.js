@@ -9,7 +9,7 @@ const user = require('./user')
 routes.get('/', HomeController.index)
 routes.get('/about', HomeController.about)
 routes.get('/recipes', HomeController.recipes)
-routes.get('/recipes/:id',HomeController.info)
+routes.get('/recipes/:id',HomeController.details)
 routes.get('/chefs', HomeController.chefs)
 
 routes.use('/admin', chef)

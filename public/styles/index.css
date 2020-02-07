@@ -151,13 +151,16 @@ header {
 }
 
 .recipe-image {
-  margin-right: 100px;
   align-self: flex-end;
 }
 
 .recipe-image img {
+  max-width: 940px;
+  width: 100%;
   height: 280px;
   border-radius: 15px;
+  margin-bottom: 16px;
+  object-fit: cover;
 }
 
 .recipe-title {
@@ -172,7 +175,7 @@ header {
 
 .recipe-title h3 {
   font-size: 20px;
-  color: var(--font-light);
+  color: #444444;
   text-align: center;
 }
 
@@ -190,7 +193,7 @@ header {
 
 .recipe span{
   cursor: pointer;
-  color: var(--font-light);
+  color: #444444;
   font-size: 12px;
   display: inline-block;
   text-transform: uppercase;

@@ -6,16 +6,23 @@
 
 {% block content %}
 
-<div class="app">
-    <section>
-      <div class="cards">
-          <div class="card recipe-pointer" id="1">
-            <img src="http://placehold.it/500x500?text=SEM-IMAGEM" alt="img">
-            <h6>Title</h6>
-            <p>Author</p>
-          </div>
+<div class="main">
+  <section class="main-recipes">
+    <div class="recipes">
+    {% for item in recipes %}
+       <div class="recipe-card">
+       <a href="/recipes/{{item.id}}">
+        <img
+          class="image"
+          src="/images/burger.png"
+          alt="{{item.title}}"
+        />
+        </a>
+        <p class="title">{{item.title}}</p>
+        <p class="author">{{item.author}}</p>
       </div>
-    </section>
+    {% endfor %}
+  </section>
 </div>
 
 {% endblock %}

@@ -8,10 +8,10 @@
             <a class="link" href="/chefs">Chefs</a>
             <a class="link" href="/recipes">Receitas</a>
         </div>
-        <form action="/home" method="GET">
+        <form action="/recipes" method="GET">
             <input 
                 type="text" 
-                name="filter"
+                name="search"
                 placeholder="Buscar receitas"
                 {% if search.term %}
                     value={{search.term}}
