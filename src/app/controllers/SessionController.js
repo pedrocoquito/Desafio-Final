@@ -15,7 +15,7 @@ module.exports = {
     login(req, res) {
         try {
             req.session.userId = req.user.id
-            return res.render("/admin")
+            return res.render("home/index")
         } catch (err) {
             console.error(err)
         }
@@ -23,7 +23,7 @@ module.exports = {
     async logout(req, res) {
         try {
             await req.session.destroy()
-            return res.redirect('/')
+            return res.redirect('home/index')
         } catch (err) {
             console.error(err)
         }
