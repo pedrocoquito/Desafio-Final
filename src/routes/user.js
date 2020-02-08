@@ -13,7 +13,7 @@ routes.get('/logout', SessionController.logout)
 routes.get('/forgot-password', SessionController.forgotForm)
 routes.post('/forgot-password',SessionValidator.forgot, SessionController.forgot)
 routes.get('/password-reset', SessionController.resetForm)
-routes.post('/password-reset', SessionController.reset)
+routes.post('/password-reset', SessionValidator.reset, SessionController.reset)
 
 routes.get('/users', UserController.list)
 routes.get('/users/create', UserController.create)

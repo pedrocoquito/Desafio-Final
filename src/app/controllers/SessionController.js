@@ -15,7 +15,7 @@ module.exports = {
     login(req, res) {
         try {
             req.session.userId = req.user.id
-            return res.render("/")
+            return res.render("/admin")
         } catch (err) {
             console.error(err)
         }
@@ -70,16 +70,35 @@ module.exports = {
     },
     resetForm(req, res) {
         try {
-            return res.render("home/index")
+            return res.render("admin/session/password-reset", { token: req.query.token })
         } catch (err) {
             console.error(err)
         }
     },
     async reset(req, res) {
+        const user = req.user
+        const { password, token } = req.body
+
         try {
-            return res.render("home/index")
+            const newPassword = await hash(password, 8)
+
+            await User.update(user.id, {
+                password: newPassword,
+                reset_token: "",
+                reset_token_expires: ""
+            })
+
+            return res.render("admin/session/login", {
+                user: req.body,
+                success: "Senha atualizada, efetue seu login!."
+            })
         } catch (err) {
             console.error(err)
+            return res.render("admin/session/password-reset", {
+                user: req.body,
+                token,
+                error: "Erro inesperado, tente novamente."
+            })
         }
     }
 }

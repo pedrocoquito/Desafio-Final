@@ -47,19 +47,19 @@ async function reset(req, res, next) {
 
     const user = await User.findOne({ where: { email } })
 
-    if (!user) return res.render('session/password-reset', {
+    if (!user) return res.render('admin/session/password-reset', {
         user: req.body,
         token,
         error: "Usuário não cadastrado!"
     })
 
-    if (password != passwordRepeat) return res.render('session/password-reset', {
+    if (password != passwordRepeat) return res.render('admin/session/password-reset', {
         user: req.body,
         token,
         error: 'As senhas estão diferentes.'
     })
 
-    if (token != user.reset_token) return res.render('session/password-reset', {
+    if (token != user.reset_token) return res.render('admin/session/password-reset', {
         user: req.body,
         token,
         error: 'Solicite uma nova recuperação de senha.'
@@ -68,7 +68,7 @@ async function reset(req, res, next) {
     let now = new Date()
     now = now.setHours(now.getHours())
 
-    if (now > user.reset_token_expires) return res.render('session/password-reset', {
+    if (now > user.reset_token_expires) return res.render('admin/session/password-reset', {
         user: req.body,
         token,
         error: 'Token expirado. Por favor solicite uma nova recuperação.'
