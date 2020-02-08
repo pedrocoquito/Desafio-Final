@@ -5,6 +5,7 @@ const SessionController = require('../app/controllers/SessionController')
 const UserController = require('../app/controllers/UserController')
 const ProfileController = require('../app/controllers/ProfileController')
 const SessionValidator = require('../app/validators/session')
+const SessionMiddleware = require('../app/middlewares/session')
 
 routes.get('/login', SessionController.LoginForm)
 routes.post('/login',SessionValidator.login, SessionController.login)
@@ -22,7 +23,7 @@ routes.post('/users', UserController.post)
 routes.put('/users', UserController.put) 
 routes.delete('/users', UserController.delete) 
 
-routes.get('/profile', ProfileController.index)
+routes.get('/profile', SessionMiddleware.onlyUsers, ProfileController.index)
 routes.put('/profile', ProfileController.put)
 
 module.exports = routes
