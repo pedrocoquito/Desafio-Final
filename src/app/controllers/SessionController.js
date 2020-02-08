@@ -14,30 +14,58 @@ module.exports = {
     },
     login(req, res) {
         try {
-            return res.render("home/index")
+            req.session.userId = req.user.id
+            return res.render("/")
         } catch (err) {
             console.error(err)
         }
     },
     async logout(req, res) {
         try {
-            return res.render("home/index")
+            await req.session.destroy()
+            return res.redirect('/')
         } catch (err) {
             console.error(err)
         }
     },
     forgotForm(req, res) {
         try {
-            return res.render("home/index")
+            return res.render("admin/session/forgot-password")
         } catch (err) {
             console.error(err)
         }
     },
     async forgot(req, res) {
+        const user = req.user
+
         try {
-            return res.render("home/index")
+            const token = crypto.randomBytes(20).toString("hex")
+
+            let now = new Date()
+            now = now.setHours(now.getHours() + 1)
+
+            await User.update(user.id, {
+                reset_token: token,
+                reset_token_expires: now
+            })
+
+            await mailer.sendMail({
+                to: user.email,
+                from: 'noreply@foodfy.com',
+                subject: 'Recuperação de senha',
+                html: `<h2>Perdeu a senha?</h2
+                    <p>Clique no link para recuperar</p>
+                    <a href="http://localhost:3000/admin/password-reset?token=${token}" target="_blank">Nova Senha</a>`
+            })
+
+            return res.render("admin/session/forgot-password", {
+                success: "Verifique seu email"
+            })
         } catch (err) {
             console.error(err)
+            res.render("admin/session/forgot-password", {
+                error: "Erro inesperado, tente novamente."
+            })
         }
     },
     resetForm(req, res) {

@@ -1,5 +1,34 @@
 {% extends "admin/layout.njk" %}
 
 {% block content %}
-    <h1>TESTE LOGIN</h1>
-{% endblock content %}
+<div class="fields-form">
+    <h2>Iniciar Sessão</h2>
+    <form action="/admin/login" method="POST">
+        <div class="item">
+            <div class="login-form">
+            <div class="field">
+                <p>Email</p>
+                <input 
+                type="text" 
+                name="email"
+                value="{{user.email}}"
+                placeholder="Digite seu email"
+                >
+            </div>
+            <div class="field">
+                <p>Senha</p>
+                <input 
+                type="password" 
+                name="password" 
+                placeholder="Digite sua senha"
+                >
+            </div>
+            <div class="login-footer">
+                <a href="/admin/forgot-password">Perdeu a senha?</a>
+                <button class="login-button" type="submit">Acessar</button>
+            </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

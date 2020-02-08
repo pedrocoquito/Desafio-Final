@@ -1,0 +1,49 @@
+.fields-form {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:0 auto;
+    margin-top: 48px;
+  }
+  
+  .fields-form h2 {
+    color: #111111;
+    margin-bottom: 32px;
+  }
+  
+  .login-form .field {
+    margin-bottom: 24px;
+  }
+
+  .login-footer {
+    margin-top: 35px;
+    width: 450px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .login-footer a {
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color:  #969696;
+  }
+  
+  .forgot-footer {
+    justify-content: space-evenly;
+  }
+
+  .login-button {
+    margin-left: 1%;
+    background-color: #6558C3;
+    border-radius: 4px;
+    padding: 8px 32px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+  }
+  

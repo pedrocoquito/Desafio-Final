@@ -305,7 +305,7 @@ nav form button:hover {
   filter: brightness(90%);
 }
 
-form .item .input input,
+form .item input,
 form .item input[type="text"],
 form .item input[type="number"],
 form .item textarea,
