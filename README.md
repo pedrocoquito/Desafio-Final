@@ -5,6 +5,7 @@ Para o projeto ser executado é necessário ter o PostgreSQL, Node e NPM instala
 Com o projeto aberto no VS code/ou terminal realizar as seguintes etapas:
 
 * Acesse a pasta src/config e no arquivo db.js altere as propriedades (user e password) de acordo com sua configuração;
+* Na pasta src/lib/mailer altere os campos user e pass de acordo com o suas credenciais no nodemailer (essa configuração é necessária para testar a funcionalidade de recuperação da senha)
 * Use o comando npm install (para instalar todas as libs e dependências do projeto)
 * Utilize o arquivo database.sql para gerar o banco de dados
 * Com o comando node seed.js popule o banco de dados
