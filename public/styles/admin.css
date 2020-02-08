@@ -1,0 +1,26 @@
+.admin-header {
+  padding: 32px;
+  background-color: black;
+}
+
+.nav-dark {
+    display: flex;
+    align-items: center;
+    max-width: 940px;
+    width: 95%;
+    margin: 0 auto;
+  }
+  
+  .nav-dark .admin-link{
+    display: flex;
+    margin-left: 100px;
+    font-size: 16px;
+    text-align: left;
+    position: relative;
+    margin-left: 24px;
+    color: #ffffff;
+  }
+  
+  .nav-dark .admin-link:hover{
+    font-weight: bold;
+  }

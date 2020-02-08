@@ -1,28 +1,17 @@
-<header>
-    <nav>
-        <div class="nav">
-            <a class="logo" href="/">
-                <img src="../../assets/logo.png" alt="Logo do Foodfy" />
-            </a>
-            <a class="link" href="/about">Sobre</a>
-            <a class="link" href="/chefs">Chefs</a>
-            <a class="link" href="/recipes">Receitas</a>              
-            {% if session.userId %}
-                <a class="link" href="/admin/users">Área Restrita</a>
-                <a class="link" href="admin/logout">Logout</a>
-            {% else %}
-                <a class="link" href="admin/login">Login</a>
-            {% endif %}
-        </div>
-        <form action="/recipes" method="GET">
-            <input 
-                type="text" 
-                name="search"
-                placeholder="Buscar receitas"
-                {% if search.term %}
-                    value={{search.term}}
-                {% endif %}>
-            <button type="submit">Buscar</button> 
-        </form>
-    </nav>
+<header class="admin-header">
+    <div class="nav-dark">
+        <a href="/home">
+            <img src="../../assets/Foodfy.png" alt="Logo do Foodfy" />
+        </a>
+        <a class="admin-link" href="/admin/recipes">Receitas</a> 
+        <a class="admin-link" href="/admin/chefs">Chefs</a>      
+        {% if session.is_admin == true %}
+            <a class="admin-link" href="/admin/users">Usuários</a>
+        {% else %}
+            <a class="admin-link "href="/admin/profile">Usuários</a>
+        {% endif %}
+        {% if session.userId %}
+            <a class="admin-link" href="/admin/logout">Logout</a> 
+        {% endif %}   
+    </div>
 </header>

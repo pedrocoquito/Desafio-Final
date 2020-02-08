@@ -9,12 +9,7 @@
     </head>
     <body>
         {%include "./parts/messages.njk"%}
-
-        {% if session.userId %} 
-            {% include "./parts/userHeader.njk" %} 
-        {% else %}
-            {% include "./parts/header.njk" %}
-        {% endif %}
+        {% include "./parts/header.njk" %}
         
         {% block content %}
         {% endblock %}
