@@ -11,7 +11,7 @@
                 <h1>Bem vindo {{user.name}}</h1>
             </div>
             <div style="flex: 0 20%;">
-                <button class="login-button"type="submit">Salvar</button>
+                <button class="login-button" type="submit">Salvar</button>
             </div>
           </div>
         </div>
@@ -45,6 +45,8 @@
               placeholder="Digite sua senha"
               required>
           </div>
+
+          <input type="hidden" name="id" value="{{session.userId}}">
         </div>
       </div>
     </form>
