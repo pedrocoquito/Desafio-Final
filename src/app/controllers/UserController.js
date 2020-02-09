@@ -38,7 +38,7 @@ module.exports = {
     },
     async edit(req, res) {
         try {
-            const { body } = req
+            const user = req.body
 
             return res.render(`admin/users/edit`, { user })
         } catch (error) {

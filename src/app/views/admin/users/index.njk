@@ -3,6 +3,51 @@
 
 {% block content %}
 
-Olá {{user.name}}
+<div class="main">
+    <form action="/admin/profile?_method=PUT" method="POST">
+        <div class="admin-form">
+          <div class="form-header">
+            <div style="flex: 0 80%;">
+                <h1>Bem vindo {{user.name}}</h1>
+            </div>
+            <div style="flex: 0 20%;">
+                <button class="login-button"type="submit">Salvar</button>
+            </div>
+          </div>
+        </div>
+      <div class="item">
+        <div class="admin-form">
+          <div class="field admin-field" style="flex: 0 50%;">
+            <p>Nome</p>
+            <input 
+              type="text" 
+              name="name" 
+              value="{{user.name}}" 
+              placeholder="Digite seu nome"
+              required>
+          </div>
+
+          <div class="field admin-field" style="flex: 0 50%;">
+            <p>Email</p>
+            <input 
+              type="text" 
+              name="email" 
+              value="{{user.email}}" 
+              placeholder="Digite seu email"
+              required>
+          </div>
+          
+          <div class="field admin-field" style="flex: 0 50%;">
+            <p>Senha</p>
+            <input 
+              type="password" 
+              name="password" 
+              placeholder="Digite sua senha"
+              required>
+          </div>
+        </div>
+      </div>
+    </form>
+</div>
 
 {% endblock content %}

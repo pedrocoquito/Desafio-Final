@@ -1,0 +1,22 @@
+.admin-form {
+    color: #111111;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.admin-field {
+    padding: 16px;
+}
+
+.form-header {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
