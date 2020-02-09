@@ -1,16 +1,24 @@
-{% extends "layout.njk" %}
+{% extends "admin/layout.njk" %}
 
-{% import "parts/card.njk" as card %}
+{% block head %}
+  <title>Usuários</title>
+{% endblock %}
 
 {% block content %}
 
-{% call card.render('Registre-se', 'users-register container') %}
-        <form method="POST" action="/users/register">
-            <div class="fields">
-                {% include 'user/fields.njk' %}
+<div class="main">
+  <div class="main-recipes">
+    <div class="recipes">
+      {% for user in users %}
+          <div class="chef-card">
+            <div class="chef">
+              <h2>{{user.name}}</h2>
+              <h3>{{user.email}} receita(s)</h3>
             </div>
-            <button class="button" type="submit">Salvar</button>
-        </form>
-{% endcall %}    
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 
-{% endblock content %}
+{% endblock %}

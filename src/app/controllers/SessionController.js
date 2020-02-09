@@ -15,7 +15,7 @@ module.exports = {
     login(req, res) {
         try {
             req.session.userId = req.user.id
-            return res.render("home/index")
+            return res.render("admin/users/index")
         } catch (err) {
             console.error(err)
         }
@@ -23,7 +23,7 @@ module.exports = {
     async logout(req, res) {
         try {
             await req.session.destroy()
-            return res.redirect('home/index')
+            return res.redirect('/admin/login')
         } catch (err) {
             console.error(err)
         }
@@ -59,12 +59,12 @@ module.exports = {
             })
 
             return res.render("admin/session/forgot-password", {
-                success: "Verifique seu email"
+                success: "Verifique seu email!"
             })
         } catch (err) {
             console.error(err)
             res.render("admin/session/forgot-password", {
-                error: "Erro inesperado, tente novamente."
+                error: "Erro inesperado!."
             })
         }
     },
@@ -90,14 +90,14 @@ module.exports = {
 
             return res.render("admin/session/login", {
                 user: req.body,
-                success: "Senha atualizada, efetue seu login!."
+                success: "Senha atualizada!."
             })
         } catch (err) {
             console.error(err)
             return res.render("admin/session/password-reset", {
                 user: req.body,
                 token,
-                error: "Erro inesperado, tente novamente."
+                error: "Erro inesperado!"
             })
         }
     }

@@ -1,11 +1,11 @@
 <header class="admin-header">
     <div class="nav-dark">
-        <a href="/home">
+        <a href="/">
             <img src="../../assets/Foodfy.png" alt="Logo do Foodfy" />
         </a>
         <a class="admin-link" href="/admin/recipes">Receitas</a> 
         <a class="admin-link" href="/admin/chefs">Chefs</a>      
-        {% if session.is_admin == true %}
+        {% if req.session.is_admin == true %}
             <a class="admin-link" href="/admin/users">Usuários</a>
         {% else %}
             <a class="admin-link "href="/admin/profile">Usuários</a>

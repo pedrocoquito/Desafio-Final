@@ -1,26 +1,34 @@
-{% extends "layout.njk" %}
-{% import "parts/card.njk" as cards %}
+{% extends "admin/layout.njk" %}
 
 {% block content %}
-
-{% call cards.render('Meus Anúncios', 'users-ads container') %}
-    <div class="items">
-        {% for product in products %}
-            <div class="item"
-                style="background-image: url({{product.img}})">
+<div class="fields-form">
+    <h2>Criar Usuário</h2>
+    <form action="/admin/users" method="POST">
+        <div class="item">
+            <div class="login-form">
+            <div class="field">
+                <p>Email</p>
+                <input 
+                type="text" 
+                name="email"
+                value="{{user.email}}"
+                placeholder="Digite seu email"
+                >
             </div>
-            <div class="info">
-                <div class="title">{{product.name}}</div>
-                <div class="price">{{product.formattedPrice}}</div>
-                <div class="published">Cadastrado em {{product.formattedCreatedAt}}</div>
-                
-                <div class="actions">
-                    <a href="/products/{{product.id}}/edit">Editar</a>
-                    <a href="/products/{{product.id}}">Ver</a>
-                </div>
+            <div class="field">
+                <p>Senha</p>
+                <input 
+                type="password" 
+                name="password" 
+                placeholder="Digite sua senha"
+                >
             </div>
-        {% endfor %}
-    </div>
-{% endcall %}
-    
-{% endblock content %}
+            <div class="login-footer">
+                <a href="/admin/forgot-password">Perdeu a senha?</a>
+                <button class="login-button" type="submit">Acessar</button>
+            </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
