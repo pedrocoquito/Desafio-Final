@@ -4,7 +4,7 @@ const Recipe = require('../models/Recipe')
 module.exports = {
     async index(req, res) {
         try {
-            return res.render("home/recipes")
+            return res.render("admin/recipes/index")
         } catch (err) {
             console.error(err)
         }

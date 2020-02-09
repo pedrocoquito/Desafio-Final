@@ -7,10 +7,11 @@
     <form action="/admin/profile?_method=PUT" method="POST">
         <div class="admin-form">
           <div class="form-header">
-            <div style="flex: 0 80%;">
+            <div style="flex: 0 60%;">
                 <h1>Bem vindo {{user.name}}</h1>
             </div>
-            <div style="flex: 0 20%;">
+            <div style="flex: 0 40%;">
+                <a id="bkButton" href="/admin/users">Cancelar</a>
                 <button class="login-button" type="submit">Salvar</button>
             </div>
           </div>

@@ -13,10 +13,22 @@
 }
 
 .form-header {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin: auto;
     margin-top: 32px;
     margin-bottom: 32px;
+}
+
+#bkButton {
+    border-radius: 4px;
+    padding: 8px 32px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+    background-color: #8A8A8A;
+    margin-left: 16px;  
 }
