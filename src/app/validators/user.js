@@ -17,38 +17,17 @@ async function post(req, res, next) {
     const fillAllFields = checkAllFields(req.body)
 
     if (fillAllFields) {
-        return res.render("user/register", fillAllFields)
+        return res.render("admin/users/create", fillAllFields)
     }
 
-    let { email, cpf_cnpj, password, passwordRepeat, cep } = req.body
+    let { name, email, password, admin } = req.body
 
-    cpf_cnpj = cpf_cnpj.replace(/\D/g, "")
-    cep = cep.replace(/\D/g, "")
+    const user = await User.findOne({ where: { email } })
 
-    const user = await User.findOne({ where: { email }, or: { cpf_cnpj } })
-
-    if (user) return res.render('user/register', {
+    if (user) return res.render('admin/users/create', {
         user: req.body,
         error: 'Usuário já cadastrado'
     })
-
-    if (password != passwordRepeat) return res.render('user/register', {
-        user: req.body,
-        error: 'As senhas estão diferentes'
-    })
-
-    next()
-}
-async function show(req, res, next) {
-    const { userId: id } = req.session
-
-    const user = await User.findOne({ where: { id } })
-
-    if (!user) return res.render('user/register', {
-        error: "Usuário não foi encontrado"
-    })
-
-    req.user = user
 
     next()
 }
@@ -56,12 +35,12 @@ async function update(req, res, next) {
     const fillAllFields = checkAllFields(req.body)
 
     if (fillAllFields) {
-        return res.render("user/index", fillAllFields)
+        return res.render("admin/users/edit", fillAllFields)
     }
 
     const { id, password } = req.body
 
-    if(!password) return res.render("user/index", {
+    if(!password) return res.render("admin/users/edit", {
         user: req.body,
         error: "Informe sua senha para a atualizar seu cadastro"
     })
@@ -70,7 +49,7 @@ async function update(req, res, next) {
 
     const passed = await compare(password, user.password)
 
-    if(!passed) return res.render("user/index", {
+    if(!passed) return res.render("admin/users/edit", {
         user: req.body,
         error: "Senha incorreta!"
     })
