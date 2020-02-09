@@ -3,7 +3,7 @@ const User = require('../models/User')
 module.exports = {
     async index(req, res) {
         try {
-            const user = User.findOne(req.session.userId)
+            const user  = req.user
             return res.render("admin/users/index", { user })
         } catch (err) {
             console.error(err)
