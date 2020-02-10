@@ -1,4 +1,5 @@
 const Chef = require('../models/Chef')
+const Recipe = require('../models/Recipe')
 const db = require('../../config/db')
 const File = require('../models/File')
 
@@ -38,12 +39,12 @@ module.exports = {
             results = await db.query(query)
             const recipes = results.rows
             const admin = req.session.admin
-            
+
 
             return res.render('admin/chefs/index', { chefs, admin, recipes })
-          } catch (error) {
+        } catch (error) {
             console.error(error)
-          }
+        }
     },
     async create(req, res) {
         try {
@@ -70,23 +71,64 @@ module.exports = {
     },
     async edit(req, res) {
         try {
-            return console.log("olá")
+            let id = req.params
+            const chef = await Chef.findOne({ where: id })
+
+            return res.render(`admin/chefs/edit`, { chef })
         } catch (err) {
             console.error(err)
         }
     },
     async put(req, res) {
         try {
-            return res.render("home/index")
+            let { id, name } = req.body
+
+            await Chef.update(id, {
+                name
+            })
+
+            const chefs = await Chef.findAllAvatar()
+
+            return res.render('admin/chefs/list', {
+                chefs,
+                user: req.user,
+                success: 'Conta atualizada!'
+            })
         } catch (err) {
             console.error(err)
+            return res.render(`admin/chefs/edit`, {
+                error: 'Erro inesperado!'
+            })
         }
     },
     async delete(req, res) {
         try {
-            return res.render("home/index")
+            const { id } = req.body
+
+            let query = `
+            delete from recipe_files where recipe_id in (select id from recipes where chef_id = ${id})
+            `
+            await db.query(query)
+            query = `
+            delete from recipes where chef_id = ${id}
+            `
+            await db.query(query)
+
+            await Chef.delete(id)
+            
+            const chefs = await Chef.findAllAvatar()
+            return res.render('admin/chefs/list', {
+                chefs,
+                user: req.user,
+                success: 'Conta Deletada!'
+            })
         } catch (err) {
-            console.error(err)
+            console.log(err)
+            const chefs = await Chef.findAllAvatar()
+            return res.render('admin/chefs/list', {
+                chefs,
+                error: 'Erro inesperado!'
+            })
         }
     }
 }

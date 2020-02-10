@@ -1,25 +1,25 @@
 {% extends "admin/layout.njk" %}
 
 {% block title %} 
-  <title>Editar Usuário</title> 
+  <title>Chef</title> 
 {% endblock %}
 
 {% block content %}
   <div class="main">
-    <form action="/admin/users?_method=PUT" method="post">
+    <form action="/admin/chefs?_method=PUT" method="post">
       <div class="admin-form">
           <div class="form-header">
             <div style="flex: 0 60%;">
-                <h1>Editar Usuário</h1>
+                <h1>Cadastrar Chefs</h1>
             </div>
             <div style="flex: 0 40%;">
                 <button class="login-button" type="submit">Salvar</button>
-                <a id="bkButton" href="/admin/users">Cancelar</a>
+                <a id="bkButton" href="/admin/chefs">Cancelar</a>
             </div>
           </div>
       </div>
-      <input type="hidden" name="id" value="{{user.id}}">
-      {% include 'admin/users/fields.njk' %}
+      <input type="hidden" name="id" value="{{chef.id}}">
+      {% include 'admin/chefs/fields.njk' %}
     </form>
   </div>
 {% endblock %}
