@@ -23,7 +23,7 @@ routes.post('/password-reset', SessionValidator.reset, SessionController.reset)
 routes.get('/users', UserController.list)
 routes.post('/users', UserValidator.post, UserController.post)
 routes.get('/users/create', isAdmin, UserController.create)
-routes.put('/users', UserValidator.update, UserController.put)
+routes.put('/users', UserController.put)
 routes.get('/users/:id/edit', isAdmin, UserController.edit)
 routes.delete('/users', isAdmin, UserController.delete)
 

@@ -1,34 +1,25 @@
 {% extends "admin/layout.njk" %}
 
+{% block title %} 
+  <title>Criar Usuário</title> 
+{% endblock %}
+
 {% block content %}
-<div class="fields-form">
-    <h2>Criar Usuário</h2>
+  <div class="main">
     <form action="/admin/users" method="POST">
-        <div class="item">
-            <div class="login-form">
-            <div class="field">
-                <p>Email</p>
-                <input 
-                type="text" 
-                name="email"
-                value="{{user.email}}"
-                placeholder="Digite seu email"
-                >
+      <div class="admin-form">
+          <div class="form-header">
+            <div style="flex: 0 60%;">
+                <h1>Criar Usuário</h1>
             </div>
-            <div class="field">
-                <p>Senha</p>
-                <input 
-                type="password" 
-                name="password" 
-                placeholder="Digite sua senha"
-                >
+            <div style="flex: 0 40%;">
+                <button class="login-button" type="submit">Salvar</button>
+                <a id="bkButton" href="/admin/users">Cancelar</a>
             </div>
-            <div class="login-footer">
-                <a href="/admin/forgot-password">Perdeu a senha?</a>
-                <button class="login-button" type="submit">Acessar</button>
-            </div>
-            </div>
-        </div>
+          </div>
+      </div>
+      <input type="hidden" name="password" value="1234">
+      {% include 'admin/users/fields.njk' %}
     </form>
-</div>
+  </div>
 {% endblock %}

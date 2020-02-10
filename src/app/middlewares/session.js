@@ -6,7 +6,7 @@ function onlyUsers(req, res, next) {
 }
 
 function isAdmin(req, res, next) {
-    if (!req.session.is_admin)
+    if (!req.session.admin)
         return res.redirect('/admin')
 
     next()

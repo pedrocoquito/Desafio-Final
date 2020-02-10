@@ -1,0 +1,25 @@
+{% extends "admin/layout.njk" %}
+
+{% block title %} 
+  <title>Editar Usuário</title> 
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+    <form action="/admin/users?_method=PUT" method="post">
+      <div class="admin-form">
+          <div class="form-header">
+            <div style="flex: 0 60%;">
+                <h1>Editar Usuário</h1>
+            </div>
+            <div style="flex: 0 40%;">
+                <button class="login-button" type="submit">Salvar</button>
+                <a id="bkButton" href="/admin/users">Cancelar</a>
+            </div>
+          </div>
+      </div>
+      <input type="hidden" name="id" value="{{user.id}}">
+      {% include 'admin/users/fields.njk' %}
+    </form>
+  </div>
+{% endblock %}

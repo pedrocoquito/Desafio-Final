@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const { hash } = require('bcryptjs')
 
 module.exports = {
     async list(req, res) {
@@ -18,44 +19,49 @@ module.exports = {
     },
     async post(req, res) {
         try {
-            let { name, email, password, is_admin } = req.body
-
+            let { name, email, password, admin } = req.body
+            if (typeof admin === 'undefined') {
+                admin = false
+            }
             password = await hash(password, 8)
 
-            const userId = await User.create({
-                name,
-                email,
-                password,
-                is_admin
-            })
+            await User.create({ name, email, password, is_admin: admin })
 
-            req.session.userId = userId
+            const users = await User.findAll
 
-            return res.redirect('admin/users/create')
+            return res.render('admin/users/index', { users })
         } catch (err) {
             console.error(err)
         }
     },
     async edit(req, res) {
         try {
-            const user = req.body
+            let id = req.params
+            const user = await User.findOne({ where: id })
 
             return res.render(`admin/users/edit`, { user })
-        } catch (error) {
-            console.error(error)
+        } catch (err) {
+            console.error(err)
         }
     },
     async put(req, res) {
         try {
-            const { id, name, email, is_admin } = req.user
+            let { id, name, email, admin } = req.body
+
+            if (typeof admin === 'undefined') {
+                admin = false
+            }
 
             await User.update(id, {
                 name,
                 email,
-                is_admin
+                is_admin: admin
             })
 
-            return res.render('admin/users/edit', {
+            const users = await User.findAll()
+
+            return res.render('admin/users/list', {
+                users,
                 user: req.user,
                 success: 'Conta atualizada!'
             })
@@ -71,12 +77,17 @@ module.exports = {
             const { id } = req.body
 
             await User.delete(id)
+            const users = await User.findAll()
 
-            return res.redirect('/admin/users')
+            return res.render('admin/users/list', {
+                users: users,
+                user: req.user,
+                success: 'Conta Deletada!'
+            })
         } catch (err) {
             console.log(err)
 
-            return res.render('admin/users/edit', {
+            return res.render('admin/users/list', {
                 user,
                 error: 'Erro inesperado!'
             })

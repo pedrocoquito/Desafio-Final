@@ -26,9 +26,62 @@
     padding: 8px 32px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 16px;
     color: #ffffff;
     text-align: center;
     background-color: #8A8A8A;
     margin-left: 16px;  
+}
+
+#addButton {
+    border-radius: 4px;
+    padding: 8px 32px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+    background-color: #6558C3;
+    margin-left: 16px;  
+}
+
+.main-user {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 19%;
+}
+
+.user h2 {
+    font-size: 18px;
+    font-weight: normal;
+    color: var(--title-color);
+}
+  
+.user p {
+    font-size: 14px;
+    color: #777777;
+} 
+  
+.user-links {
+    margin-top: 10px;
+    display: flex;
+}
+  
+.user-links > a {
+    margin-right: 10%;
+    font-size: 14px;
+    font-weight: bold;
+    color: #6558C3;
+}
+  
+.user-links button {
+    font-weight: bold;
+    font-size: 14px;
+    background: none;
+    cursor: pointer;
+    color: #F55A5A;
+}
+  
+.user .user-actions a:hover,
+.user .user-actions button:hover {
+    filter: brightness(70%);
 }

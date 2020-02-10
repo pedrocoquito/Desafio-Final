@@ -1,24 +1,37 @@
 {% extends "admin/layout.njk" %}
 
-{% block head %}
-  <title>Usuários</title>
+{% block title %} 
+  <title>Usuários</title> 
 {% endblock %}
 
-{% block content %}
+{% block content%}
 
-<div class="main">
-  <div class="main-recipes">
-    <div class="recipes">
-      {% for user in users %}
-          <div class="chef-card">
-            <div class="chef">
-              <h2>{{user.name}}</h2>
-              <h3>{{user.email}}</h3>
+  <div class="main">
+     <div class="admin-form">
+          <div class="form-header">
+            <div style="flex: 0 80%;">
+                <h1>Usuários</h1>
+            </div>
+            <div style="flex: 0 20%;">
+                <a id="addButton" href="/admin/users/create">Novo</a>
             </div>
           </div>
+      </div>
+    <div class="main-user">
+      {% for user in users %}
+        <div class="user">
+          <h2>{{user.name}}</h2>
+          <p>{{user.email}}</p>
+          <div class="user-links">
+            <a href="/admin/users/{{user.id}}/edit">Editar</a>
+            <form id="delete" action="/admin/users?_method=DELETE" method="post">
+              <input type="hidden" name="id" value="{{user.id}}">
+              <button type="submit">Remover</button>
+            </form>
+          </div>
+        </div>
       {% endfor %}
     </div>
   </div>
-</div>
 
 {% endblock %}
