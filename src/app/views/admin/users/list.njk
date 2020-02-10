@@ -12,9 +12,11 @@
             <div style="flex: 0 80%;">
                 <h1>Usuários</h1>
             </div>
+            {% if admin == true %}
             <div style="flex: 0 20%;">
                 <a id="addButton" href="/admin/users/create">Novo</a>
             </div>
+            {% endif %}
           </div>
       </div>
     <div class="main-user">
@@ -22,6 +24,7 @@
         <div class="user">
           <h2>{{user.name}}</h2>
           <p>{{user.email}}</p>
+          {% if admin == true %}
           <div class="user-links">
             <a href="/admin/users/{{user.id}}/edit">Editar</a>
             <form id="delete" action="/admin/users?_method=DELETE" method="post">
@@ -29,6 +32,7 @@
               <button type="submit">Remover</button>
             </form>
           </div>
+          {% endif %}
         </div>
       {% endfor %}
     </div>

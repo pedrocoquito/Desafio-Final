@@ -4,8 +4,9 @@ const { hash } = require('bcryptjs')
 module.exports = {
     async list(req, res) {
         try {
+            const admin = req.session.admin
             const users = await User.findAll()
-            return res.render('admin/users/list', { users })
+            return res.render('admin/users/list', { users, admin })
         } catch (err) {
             console.error(err)
         }

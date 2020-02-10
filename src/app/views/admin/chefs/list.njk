@@ -1,0 +1,38 @@
+{% extends "admin/layout.njk" %}
+
+{% block title %} 
+  <title>Chefs</title> 
+{% endblock %}
+
+{% block content%}
+
+<div class="main">
+     <div class="admin-form">
+          <div class="form-header">
+            <div style="flex: 0 80%;">
+                <h1>Gerenciar Chefs</h1>
+            </div>
+            {% if admin == true %}
+            <div style="flex: 0 20%;">
+                <a id="addButton" href="/admin/chefs/create">Novo</a>
+            </div>
+            {% endif %}
+          </div>
+      </div>
+    <div class="main-recipes">
+      <div class="recipes">
+        {% for chef in chefs %}
+            <div class="chef-card">
+              <img src="{{chef.image if chef.image else 'http://placehold.it/500x500?text=SEM-IMAGEM'}}" alt="{{chef.name}}">
+              <div class="chef">
+                <h2>{{chef.name}}</h2>
+                <div class="user-links">
+                  <a href="/admin/users/{{user.id}}/edit">Visualizar</a>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+{% endblock %}

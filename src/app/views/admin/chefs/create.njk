@@ -1,0 +1,24 @@
+{% extends "admin/layout.njk" %}
+
+{% block title %} 
+  <title>Criar Chef</title> 
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+    <form action="/admin/users" method="POST">
+      <div class="admin-form">
+          <div class="form-header">
+            <div style="flex: 0 60%;">
+                <h1>Criando Chef</h1>
+            </div>
+            <div style="flex: 0 40%;">
+                <button class="login-button" type="submit">Salvar Chef</button>
+                <a id="bkButton" href="/admin/chefs/list">Cancelar</a>
+            </div>
+          </div>
+      </div>
+      {% include 'admin/chefs/fields.njk' %}
+    </form>
+  </div>
+{% endblock %}
