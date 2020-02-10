@@ -5,17 +5,17 @@
             <input 
               type="text" 
               name="name" 
-              value="{{user.name}}" 
+              value="{{chef.name}}" 
               placeholder="Digite seu nome"
               required>
           </div>
 
           <div class="field admin-field" style="flex: 0 100%; margin-top: 16px;">
+            <p>Avatar</p>
             <input 
-              type="text" 
-              name="email" 
-              value="{{user.email}}"
-              required>
+              type="file" 
+              name="avatar" 
+              value="{{ chef.avatar }}">
           </div>
         </div>
 </div>
