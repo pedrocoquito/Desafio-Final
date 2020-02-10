@@ -24,3 +24,9 @@
   .nav-dark .admin-link:hover{
     font-weight: bold;
   }
+
+  .add-link {
+    font-size: 14px;
+    color: #6558C3;
+    font-weight: 700;
+  }

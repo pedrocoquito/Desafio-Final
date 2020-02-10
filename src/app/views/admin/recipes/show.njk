@@ -1,72 +1,45 @@
-{% extends "layout.njk" %}
+{% extends "admin/layout.njk" %}
 
-{% block content %}
+{% block title %} 
+  <title>Receitas</title> 
+{% endblock %}
 
-    <section class="product-single container">
-        <div class="gallery">
-           <div class="highlight">
+{% block content%}
 
-                {% if not product.files[0] %}
-                    <img src="http://placehold.it/500x500?text=PRODUTO SEM IMAGEM">
-                {% else %}
-                    <img src="{{product.files[0].src}}" alt="{{product.files[0].name}}" onclick="Lightbox.open()">
-                {% endif %}
-
-                <div class="lightbox-target">
-                    <img src="{{product.files[0].src}}" alt="{{product.files[0].name}}">
-                    <a href="#" class="lightbox-close" onclick="Lightbox.close()">
-                        <i class="material-icons">close</i>
-                    </a>
+<div class="main">
+     <div class="admin-form">
+          <div class="form-header">
+            <div style="flex: 0 80%;">
+                <h1>Gerenciar Receitas</h1>
+            </div>
+            {% if admin == true %}
+            <div style="flex: 0 20%;">
+                <a id="addButton" href="/admin/recipes/create">Novo</a>
+            </div>
+            {% endif %}
+          </div>
+      </div>
+    <div class="main-recipes">
+      <div class="recipes">
+        {% for recipe in recipes %}
+            <div class="chef-card">
+              <img src="{{recipe.img if recipe.img else 'http://placehold.it/500x500?text=SEM-IMAGEM'}}" alt="{{recipe.name}}">
+              <div class="chef">
+                <h2>{{recipe.title}}</h2>
+                <div class="user-links">
+                  <a href="/recipes/{{recipe.id}}">Visualizar</a>
+                  {% if admin == true %}
+                  <a href="/admin/recipes/{{recipe.id}}/edit">Editar</a>
+                  <form id="delete" action="/admin/recipes?_method=DELETE" method="post">
+                    <input type="hidden" name="id" value="{{recipe.id}}">
+                    <button type="submit">Remover</button>
+                  </form>
+                  {% endif %}
                 </div>
-           </div>
-           <div class="gallery-preview">
-                {% for image in product.files %}
-                    <img 
-                        src="{{image.src}}" 
-                        alt="{{image.name}}"
-                        {% if loop.index0 == 0 %}
-                            class="active"
-                        {% endif %}
-                        onclick="ImageGallery.setImage(event)"
-                    >
-                {% endfor %}
-           </div>
-        </div>
-        <div class="info">
-            <h1>{{product.name}}</h1>
-            <div class="published">
-                Publicado em {{product.published.day}} às {{product.published.hour}}
+              </div>
             </div>
-            <div class="description">
-                {{product.description}}
-            </div>
-            <div class="price-buy">
-                <div class="price">
-                    {{product.formattedPrice}}
-
-                    {% if product.formattedPrice != product.formattedOldPrice %}
-                        <span class="old">{{product.formattedOldPrice}}</span>
-                    {% endif %}
-
-                </div>
-                {% if (session.userId) and (product.user_id == session.userId) %}
-                    <p class="unavailable">Este produto é seu</p>
-                {% else %}
-                    <div class="buy">
-                        {% if product.status == 0 %}
-                            <p class="unavailable">Produto Indisponível</p>
-                        {% elseif product.quantity == 0 %}
-                            <p class="unavailable">Produto sem estoque</p>
-                        {% else %}
-                            <form action="/users/orders" method="POST">
-                                <input type="hidden" name="id" value="{{product.id}}">
-                                <button class="button">Comprar</button>
-                            </form>
-                        {% endif %}
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-    </section>
-
-{% endblock content %}
+        {% endfor %}
+      </div>
+    </div>
+</div>
+{% endblock %}

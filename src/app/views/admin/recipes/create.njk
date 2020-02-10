@@ -1,16 +1,24 @@
-{% extends "layout.njk" %}
+{% extends "admin/layout.njk" %}
 
-{% import "parts/card.njk" as cards %}
+{% block title %} 
+  <title>Receitas</title> 
+{% endblock %}
 
 {% block content %}
-
-{% call cards.render('Cadastrar Produto', 'product-create container') %}
-        <form method="POST" action="/products" enctype="multipart/form-data">
-            <div class="fields">
-                {% include 'products/fields.njk' %}
+  <div class="main">
+    <form action="/admin/recipes" method="POST">
+      <div class="admin-form">
+          <div class="form-header">
+            <div style="flex: 0 60%;">
+                <h1>Cadastrar Receita</h1>
             </div>
-            <button class="button" type="submit" onclick="Validate.allFields(event)">Salvar</button>
-        </form>
-{% endcall %}
-
-{% endblock content %}
+            <div style="flex: 0 40%;">
+                <button class="login-button" type="submit">Salvar</button>
+                <a id="bkButton" href="/admin/recipes">Cancelar</a>
+            </div>
+          </div>
+      </div>
+      {% include 'admin/recipes/fields.njk' %}
+    </form>
+  </div>
+{% endblock %}

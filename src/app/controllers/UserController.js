@@ -87,7 +87,7 @@ module.exports = {
             })
         } catch (err) {
             console.log(err)
-
+            const users = await User.findAll()
             return res.render('admin/users/list', {
                 user,
                 error: 'Erro inesperado!'

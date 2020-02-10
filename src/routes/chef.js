@@ -2,7 +2,7 @@ const express = require('express')
 const routes = express.Router()
 
 const ChefController = require('../app/controllers/ChefController')
-const { onlyUsers, isLoggedRedirectToProfile, isAdmin } = require('../app/middlewares/session')
+const { isAdmin } = require('../app/middlewares/session')
 
 routes.get('/chefs', ChefController.index)
 routes.get('/chefs/create', ChefController.create)

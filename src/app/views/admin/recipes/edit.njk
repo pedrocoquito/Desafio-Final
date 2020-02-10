@@ -1,33 +1,26 @@
-{% extends "layout.njk" %}
+{% extends "admin/layout.njk" %}
+
+{% block title %} 
+  <title>Chef</title> 
+{% endblock %}
 
 {% block content %}
-
-    <section class="container form">
-        <form method="POST" action="/products?_method=PUT" enctype="multipart/form-data">
-            <div class="header">
-                <h3>Editar Produto</h3>
+  <div class="main">
+    <form action="/admin/chefs" method="POST">
+      <div class="admin-form">
+          <div class="form-header">
+            <div style="flex: 0 60%;">
+                <h1>Cadastrar Chefs</h1>
             </div>
-            <div class="fields">
-                {% include 'products/fields.njk' %}
-                <input type="hidden" name="id" value={{product.id}}>
+            {% if admin == true %}
+            <div style="flex: 0 40%;">
+                <button class="login-button" type="submit">Salvar</button>
+                <a id="bkButton" href="/admin/chefs">Cancelar</a>
             </div>
-            <button class="button edit" type="submit">Atualizar</button>
-        </form>
-
-        <form action="/products?_method=DELETE" class="form-delete" method="POST">
-            <input type="hidden" name="id" value={{product.id}}>
-            <button class="button delete" type="submit">Deletar</button>
-        </form>
-
-        <script>
-            const formDelete = document.querySelector(".form-delete")
-
-            formDelete.addEventListener("submit", function (event) {
-                const confirmation = confirm("Deseja deletar?")
-                if (!confirmation) {
-                    event.preventDefault()
-                }
-            })
-        </script>
-    </section>
-{% endblock content %}
+            {% endif %}
+          </div>
+      </div>
+      {% include 'admin/recipes/fields.njk' %}
+    </form>
+  </div>
+{% endblock %}
