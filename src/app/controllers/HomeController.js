@@ -1,5 +1,6 @@
 const Recipe = require('../models/Recipe')
 const db = require('../../config/db')
+const Chef = require('../models/Chef')
 
 module.exports = {
     async index(req, res) {
@@ -38,10 +39,7 @@ module.exports = {
     },
     async chefs(req, res) {
         try {
-            const query = 'select c.*, count(r) as recipes, f.path as image from chefs as c left join recipes as r on (r.chef_id = c.id) left join files as f on (c.file_id = f.id) group by c.id, f.path'
-            
-            const results = await db.query(query)
-            const chefs = results.rows
+            const chefs = Chef.findAllAvatar()
 
             return res.render("home/chefs", { chefs })
         } catch (err) {
