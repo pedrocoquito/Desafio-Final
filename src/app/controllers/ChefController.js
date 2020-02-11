@@ -63,8 +63,9 @@ module.exports = {
             })
 
             const chefs = await Chef.findAllAvatar()
+            const admin = req.session.admin
 
-            return res.redirect('/admin/chefs')
+            return res.redirect('/admin/chefs', { chefs, admin })
         } catch (error) {
             console.error(error)
         }
@@ -88,15 +89,20 @@ module.exports = {
             })
 
             const chefs = await Chef.findAllAvatar()
+            const admin = req.session.admin
 
             return res.render('admin/chefs/list', {
                 chefs,
-                user: req.user,
+                admin,
                 success: 'Conta atualizada!'
             })
         } catch (err) {
             console.error(err)
+            const chefs = await Chef.findAllAvatar()
+            const admin = req.session.admin
             return res.render(`admin/chefs/edit`, {
+                chefs,
+                admin,
                 error: 'Erro inesperado!'
             })
         }
@@ -113,20 +119,22 @@ module.exports = {
             delete from recipes where chef_id = ${id}
             `
             await db.query(query)
-
+            const admin = req.session.admin
             await Chef.delete(id)
-            
+
             const chefs = await Chef.findAllAvatar()
             return res.render('admin/chefs/list', {
                 chefs,
-                user: req.user,
+                admin,
                 success: 'Conta Deletada!'
             })
         } catch (err) {
             console.log(err)
             const chefs = await Chef.findAllAvatar()
+            const admin = req.session.admin
             return res.render('admin/chefs/list', {
                 chefs,
+                admin,
                 error: 'Erro inesperado!'
             })
         }

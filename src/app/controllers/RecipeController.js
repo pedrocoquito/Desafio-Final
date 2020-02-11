@@ -17,7 +17,8 @@ module.exports = {
     async create(req, res) {
         try {
             const chefs = await Chef.findAll()
-            return res.render("admin/recipes/create", { chefs })
+            const admin = req.session.admin
+            return res.render("admin/recipes/create", { chefs, admin })
         } catch (err) {
             console.error(err)
         }
@@ -97,7 +98,6 @@ module.exports = {
             return res.render('admin/recipes/show', {
                 recipes,
                 admin,
-                user: req.user,
                 success: 'Receita Deletada!'
             })
         } catch (err) {

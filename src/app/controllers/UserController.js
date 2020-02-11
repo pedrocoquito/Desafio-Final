@@ -13,7 +13,8 @@ module.exports = {
     },
     async create(req, res) {
         try {
-            return res.render('admin/users/create')
+            const admin = req.session.admin
+            return res.render('admin/users/create', { admin })
         } catch (err) {
             console.error(err)
         }
@@ -27,10 +28,10 @@ module.exports = {
             password = await hash(password, 8)
 
             await User.create({ name, email, password, is_admin: admin })
-
+            admin = req.session.admin
             const users = await User.findAll
 
-            return res.render('admin/users/index', { users })
+            return res.render('admin/users/index', { users, admin })
         } catch (err) {
             console.error(err)
         }
@@ -39,8 +40,8 @@ module.exports = {
         try {
             let id = req.params
             const user = await User.findOne({ where: id })
-
-            return res.render(`admin/users/edit`, { user })
+            const admin = req.session.admin
+            return res.render(`admin/users/edit`, { user, admin })
         } catch (err) {
             console.error(err)
         }
@@ -60,15 +61,20 @@ module.exports = {
             })
 
             const users = await User.findAll()
+            admin = req.session.admin
 
             return res.render('admin/users/list', {
                 users,
-                user: req.user,
+                admin,
                 success: 'Conta atualizada!'
             })
         } catch (err) {
             console.error(err)
+            const users = await User.findAll()
+            const admin = req.session.admin
             return res.render(`admin/users/edit`, {
+                users,
+                admin,
                 error: 'Erro inesperado!'
             })
         }
@@ -79,17 +85,20 @@ module.exports = {
 
             await User.delete(id)
             const users = await User.findAll()
+            const admin = req.session.admin
 
             return res.render('admin/users/list', {
-                users: users,
-                user: req.user,
+                users,
+                admin,
                 success: 'Conta Deletada!'
             })
         } catch (err) {
             console.log(err)
+            const admin = req.session.admin
             const users = await User.findAll()
             return res.render('admin/users/list', {
-                user,
+                users,
+                admin,
                 error: 'Erro inesperado!'
             })
         }
