@@ -70,21 +70,15 @@ async function createRecipes() {
     while (recipes.length < totalRecipes) {
         recipes.push({
             chef_id: Math.ceil(Math.random() * totalUsers),
-            title: faker.name.title()
+            title: faker.name.title(),
+            ingredients: '{1kg de carne moída, 300gr de bacon, 8 ovos, 8 pães de hambúrguer}',
+            preparation: '{Faça porções de 100gr de carne., frite o bacon e os ovos., Monte os burguers!}',
+            information = 'Preaqueça a chapa, frigideira ou grelha por 10 minutos antes de levar os hambúrgueres. Adicione um pouquinho de óleo ou manteiga e não amasse os hambúrgueres!'
         })
     }
 
     const recipesPromise = recipes.map(recipe => Recipe.create(recipe))
     recipesIds = await Promise.all(recipesPromise)
-
-    let query = "update recipes set ingredients = '{1kg de carne moída, 300gr de bacon, 8 ovos, 8 pães de hambúrguer}'"
-    await db.query(query)
-
-    query = "update recipes set preparation = '{Faça porções de 100gr de carne., frite o bacon e os ovos., Monte os burguers!}'"
-    await db.query(query)
-
-    query = "update recipes set information = 'Preaqueça a chapa, frigideira ou grelha por 10 minutos antes de levar os hambúrgueres. Adicione um pouquinho de óleo ou manteiga e não amasse os hambúrgueres!'"
-    await db.query(query)
 }
 
 async function createFiles() {

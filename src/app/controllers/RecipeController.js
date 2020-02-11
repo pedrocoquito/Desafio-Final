@@ -26,10 +26,8 @@ module.exports = {
         try {
             let { chef_id, title, ingredients, preparation, information } = req.body
 
-            ingredients = filteredArray(ingredients)
-            preparation = filteredArray(preparation)
-
-            console.log(ingredients)
+            ingredients = await Array.from(ingredients)
+            preparation = await Array.from(preparation)
 
             await Recipe.create({
                 chef_id,
