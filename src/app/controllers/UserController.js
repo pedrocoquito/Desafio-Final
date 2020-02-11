@@ -20,7 +20,6 @@ module.exports = {
     },
     async post(req, res) {
         try {
-            console.log(req.body.name)
             let { name, email, password, admin } = req.body
             if (typeof admin === 'undefined') {
                 admin = false
