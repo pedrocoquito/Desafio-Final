@@ -73,7 +73,7 @@ async function createRecipes() {
             title: faker.name.title(),
             ingredients: '{1kg de carne moída, 300gr de bacon, 8 ovos, 8 pães de hambúrguer}',
             preparation: '{Faça porções de 100gr de carne., frite o bacon e os ovos., Monte os burguers!}',
-            information = 'Preaqueça a chapa, frigideira ou grelha por 10 minutos antes de levar os hambúrgueres. Adicione um pouquinho de óleo ou manteiga e não amasse os hambúrgueres!'
+            information: 'Preaqueça a chapa, frigideira ou grelha por 10 minutos antes de levar os hambúrgueres. Adicione um pouquinho de óleo ou manteiga e não amasse os hambúrgueres!'
         })
     }
 

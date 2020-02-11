@@ -42,7 +42,12 @@ const Base = {
 
             Object.keys(fields).map(key => {
                 keys.push(key)
-                values.push(`'${fields[key]}'`)
+
+                if (key == 'ingredients' || key == 'preparation') {
+                    values.push(`'{${fields[key]}}'`)
+                } else {
+                    values.push(`'${fields[key]}'`)
+                }
             })
 
             const query = `INSERT INTO ${this.table} (${keys.join(',')})
@@ -56,18 +61,22 @@ const Base = {
             console.error(err)
         }
     },
-    update(id, fields) {
+    async update(id, fields) {
         try {
-            let update = []
+            let values = []
 
             Object.keys(fields).map(key => {
-                const line = `${key} = '${fields[key]}'`
-                update.push(line)
+                if (key == 'ingredients' || key == 'preparation') {
+                    values.push(`${key} = '{${fields[key]}}'`)
+                } else {
+                    values.push(`${key} = '${fields[key]}'`)
+                }
             })
 
-            const query = `UPDATE ${this.table} SET
-            ${update.join(',')} WHERE id = ${id}`
-
+            const query = `UPDATE ${this.table} 
+                            SET ${values.join(',')}
+                            WHERE id = ${id} 
+                        `
             return db.query(query)
 
         } catch (err) {

@@ -26,9 +26,6 @@ module.exports = {
         try {
             let { chef_id, title, ingredients, preparation, information } = req.body
 
-            ingredients = await Array.from(ingredients)
-            preparation = await Array.from(preparation)
-
             await Recipe.create({
                 chef_id,
                 title,
@@ -50,34 +47,62 @@ module.exports = {
     },
     async edit(req, res) {
         try {
-            return res.render("admin/recipes/edit")
+            let id = req.params
+            const admin = req.session.admin
+            const chefs = await Chef.findAll()
+            const recipe = await Recipe.findOne({ where: id })
+            return res.render("admin/recipes/edit", { recipe, chefs, admin })
         } catch (err) {
             console.error(err)
         }
     },
     async put(req, res) {
         try {
-            return res.render("home/index")
+            let { id, chef_id, title, ingredients, preparation, information } = req.body
+
+            await Recipe.update(id, {
+                chef_id,
+                title,
+                ingredients,
+                preparation,
+                information
+            })
+
+            const recipes = await Recipe.search('')
+            const admin = req.session.admin
+
+            return res.render('admin/recipes/show', {
+                recipes,
+                admin,
+                success: 'Receita atualizada!'
+            })
         } catch (err) {
             console.error(err)
+            const recipes = await Recipe.search('')
+            const admin = req.session.admin
+            return res.render(`admin/recipes/show`, {
+                recipes,
+                admin,
+                error: 'Erro inesperado!'
+            })
         }
     },
     async delete(req, res) {
         try {
             const { id } = req.body
-
+            await Recipe.deleteImages(id)
             await Recipe.delete(id)
-            const recipes = await Recipe.findAll()
+            const recipes = await Recipe.search('')
             const admin = req.session.admin
             return res.render('admin/recipes/show', {
                 recipes,
                 admin,
                 user: req.user,
-                success: 'Conta Deletada!'
+                success: 'Receita Deletada!'
             })
         } catch (err) {
             console.log(err)
-            const recipes = await Recipe.findAll()
+            const recipes = await Recipe.search('')
             const admin = req.session.admin
             return res.render('admin/recipes/show', {
                 recipes,

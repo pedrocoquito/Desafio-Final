@@ -6,7 +6,7 @@
 
 {% block content %}
   <div class="main">
-    <form action="/admin/chefs" method="POST">
+    <form action="/admin/recipes?_method=PUT" method="post">
       <div class="admin-form">
           <div class="form-header">
             <div style="flex: 0 60%;">
@@ -20,6 +20,7 @@
             {% endif %}
           </div>
       </div>
+      <input type="hidden" name="id" value="{{recipe.id}}">
       {% include 'admin/recipes/fields.njk' %}
     </form>
   </div>

@@ -48,5 +48,8 @@ module.exports = {
         } catch (err) {
             console.error(err)
         }
-    }
+    },
+    async deleteImages(id) {
+        await db.query(`DELETE FROM recipe_files WHERE recipe_id = ${id}`)
+    },
 }
